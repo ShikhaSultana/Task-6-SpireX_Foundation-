@@ -1,0 +1,604 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    min-height: 100vh;
+
+    font-family: "Inter", sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(124, 58, 237, 0.25),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(6, 182, 212, 0.2),
+            transparent 30%
+        ),
+
+        #080811;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================
+   BACKGROUND CIRCLES
+========================= */
+
+.background-circle {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(10px);
+
+    opacity: 0.5;
+
+    z-index: 0;
+
+}
+
+
+.circle-1 {
+
+    width: 250px;
+    height: 250px;
+
+    background: #7c3aed;
+
+    top: -100px;
+    left: -100px;
+
+}
+
+
+.circle-2 {
+
+    width: 220px;
+    height: 220px;
+
+    background: #06b6d4;
+
+    right: -80px;
+    bottom: -80px;
+
+}
+
+
+/* =========================
+   CLOCK SECTION
+========================= */
+
+.clock-section {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+
+/* =========================
+   CLOCK CONTAINER
+========================= */
+
+.clock-container {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    padding: 70px 50px;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45);
+
+}
+
+
+/* =========================
+   LIVE LABEL
+========================= */
+
+.clock-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 16px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(34, 197, 94, 0.1);
+
+    border:
+        1px solid rgba(34, 197, 94, 0.3);
+
+    color: #86efac;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================
+   LIVE DOT
+========================= */
+
+.live-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 12px #22c55e;
+
+    animation: pulse 1.5s infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+.location {
+
+    color: #a1a1aa;
+
+    font-size: 15px;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================
+   TIME DISPLAY
+========================= */
+
+.time-display {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(55px, 10vw, 120px);
+
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================
+   TIME NUMBERS
+========================= */
+
+.time-display span:not(.colon):not(.ampm) {
+
+    background:
+        linear-gradient(
+            135deg,
+            #c4b5fd,
+            #22d3ee
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 30px
+        rgba(34, 211, 238, 0.15);
+
+}
+
+
+/* =========================
+   COLON
+========================= */
+
+.colon {
+
+    color: #71717a;
+
+    animation: blink 1s infinite;
+
+}
+
+
+@keyframes blink {
+
+    0%,
+    45% {
+        opacity: 1;
+    }
+
+    50%,
+    95% {
+        opacity: 0.25;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================
+   AM PM
+========================= */
+
+.ampm {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: clamp(16px, 2vw, 25px);
+
+    color: #a78bfa;
+
+    letter-spacing: 1px;
+
+    margin-left: 15px;
+
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.date-display {
+
+    margin-top: 30px;
+
+    color: #d4d4d8;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+}
+
+
+.separator {
+
+    color: #8b5cf6;
+
+    margin: 0 10px;
+
+}
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress-container {
+
+    width: 100%;
+
+    max-width: 600px;
+
+    height: 5px;
+
+    margin: 35px auto 45px;
+
+    background: #27272a;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+
+.progress-bar {
+
+    height: 100%;
+
+    width: 0%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8b5cf6,
+            #22d3ee
+        );
+
+    transition: width 0.5s linear;
+
+}
+
+
+/* =========================
+   FORMAT SECTION
+========================= */
+
+.format-section {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    color: #a1a1aa;
+
+    font-size: 14px;
+
+}
+
+
+.format-buttons {
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 5px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+}
+
+
+/* =========================
+   FORMAT BUTTON
+========================= */
+
+.format-btn {
+
+    border: none;
+
+    padding: 9px 15px;
+
+    border-radius: 8px;
+
+    color: #a1a1aa;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition: 0.3s;
+
+}
+
+
+.format-btn:hover {
+
+    color: white;
+
+}
+
+
+.format-btn.active {
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #2563eb
+        );
+
+    box-shadow:
+        0 5px 15px
+        rgba(124, 58, 237, 0.3);
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.clock-footer {
+
+    color: #52525b;
+
+    font-size: 12px;
+
+    margin-top: 45px;
+
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 700px) {
+
+    .clock-container {
+
+        padding: 55px 25px;
+
+        border-radius: 25px;
+
+    }
+
+    .time-display {
+
+        letter-spacing: 2px;
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .clock-section {
+
+        padding: 15px;
+
+    }
+
+    .clock-container {
+
+        padding: 45px 15px;
+
+    }
+
+    .location {
+
+        font-size: 13px;
+
+    }
+
+    .date-display {
+
+        font-size: 14px;
+
+    }
+
+    .format-section {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+    .clock-footer {
+
+        margin-top: 30px;
+
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+    .time-display {
+
+        font-size: 48px;
+
+    }
+
+    .ampm {
+
+        font-size: 14px;
+
+        margin-left: 5px;
+
+    }
+
+    .date-display {
+
+        font-size: 12px;
+
+    }
+
+}

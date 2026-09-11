@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Clock</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- Background decoration -->
+
+    <div class="background-circle circle-1"></div>
+    <div class="background-circle circle-2"></div>
+
+
+    <!-- Main Clock -->
+
+    <main class="clock-section">
+
+        <div class="clock-container">
+
+
+            <!-- Small Heading -->
+
+            <div class="clock-label">
+
+                <span class="live-dot"></span>
+
+                LIVE CLOCK
+
+            </div>
+
+
+            <!-- Location -->
+
+            <p class="location">
+                📍 Your Local Time
+            </p>
+
+
+            <!-- Time -->
+
+            <div class="time-display">
+
+                <span id="hours">00</span>
+
+                <span class="colon">:</span>
+
+                <span id="minutes">00</span>
+
+                <span class="colon">:</span>
+
+                <span id="seconds">00</span>
+
+                <span id="ampm" class="ampm">
+                    AM
+                </span>
+
+            </div>
+
+
+            <!-- Date -->
+
+            <div class="date-display">
+
+                <span id="day">Monday</span>
+
+                <span class="separator">•</span>
+
+                <span id="date">01 January 2026</span>
+
+            </div>
+
+
+            <!-- Seconds Progress -->
+
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+
+            <!-- Format Buttons -->
+
+            <div class="format-section">
+
+                <span>Time Format</span>
+
+                <div class="format-buttons">
+
+                    <button
+                        id="format12"
+                        class="format-btn active">
+
+                        12 Hour
+
+                    </button>
+
+
+                    <button
+                        id="format24"
+                        class="format-btn">
+
+                        24 Hour
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer -->
+
+            <p class="clock-footer">
+
+                Built with HTML • CSS • JavaScript
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
