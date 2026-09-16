@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Clock</title>
+  <meta name="description" content="A real-time digital clock built with HTML, CSS, and JavaScript that updates every second." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+  <main class="clock" role="timer" aria-live="off">
+
+    <!-- Status row -->
+    <div class="clock__status">
+      <span class="status__live">
+        <span class="status__dot" aria-hidden="true"></span> Live
+      </span>
+      <span class="status__zone" id="zone">Local Time</span>
+    </div>
+
+    <!-- Time -->
+    <div class="clock__time">
+      <div class="time__group">
+        <span class="time__num" id="hours">00</span>
+      </div>
+      <span class="time__sep" aria-hidden="true">:</span>
+      <div class="time__group">
+        <span class="time__num" id="minutes">00</span>
+      </div>
+      <span class="time__sep" aria-hidden="true">:</span>
+      <div class="time__group">
+        <span class="time__num" id="seconds">00</span>
+      </div>
+      <span class="time__ampm" id="ampm">AM</span>
+    </div>
+
+    <!-- Date -->
+    <p class="clock__date" id="date">—</p>
+
+    <div class="clock__divider" aria-hidden="true"></div>
+
+    <!-- Extra info -->
+    <div class="clock__info">
+      <div class="info__item">
+        <div class="info__label">Day Progress</div>
+        <div class="info__value" id="dayProgress">0%</div>
+        <div class="progress"><div class="progress__fill" id="progressFill"></div></div>
+      </div>
+      <div class="info__item">
+        <div class="info__label">Week</div>
+        <div class="info__value" id="week">—</div>
+      </div>
+      <div class="info__item">
+        <div class="info__label">Timezone</div>
+        <div class="info__value" id="tz">—</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

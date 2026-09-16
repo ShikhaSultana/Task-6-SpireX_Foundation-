@@ -1,0 +1,267 @@
+/* ============================================
+   Digital Clock
+   Real-time · green & black theme
+   ============================================ */
+
+:root {
+  --bg: #050705;
+  --bg-2: #0a0f0a;
+  --panel: #0d130d;
+  --panel-2: #111a11;
+  --border: rgba(34, 197, 94, 0.22);
+  --green: #22c55e;
+  --green-bright: #4ade80;
+  --green-dim: #16a34a;
+  --green-glow: rgba(34, 197, 94, 0.55);
+  --text: #d1fae5;
+  --muted: #6b8f76;
+  --radius: 22px;
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "Share Tech Mono", "Courier New", monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.16), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.10), transparent 45%),
+    var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 18px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   CLOCK PANEL
+   ============================================ */
+.clock {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  padding: 46px 40px 40px;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 0 1px rgba(34, 197, 94, 0.05),
+    0 30px 80px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  text-align: center;
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* subtle scanline overlay */
+.clock::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(34, 197, 94, 0.03) 0px,
+    rgba(34, 197, 94, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+}
+
+/* ---------- Top status row ---------- */
+.clock__status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.status__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--green-bright);
+}
+
+.status__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green-glow);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.75); }
+}
+
+.status__zone { font-weight: 600; }
+
+/* ============================================
+   TIME DISPLAY
+   ============================================ */
+.clock__time {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--mono);
+  line-height: 1;
+}
+
+.time__group {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.time__num {
+  font-size: clamp(3rem, 15vw, 6rem);
+  font-weight: 700;
+  color: var(--green-bright);
+  text-shadow: 0 0 18px var(--green-glow), 0 0 42px rgba(34, 197, 94, 0.35);
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.time__sep {
+  font-size: clamp(2.4rem, 12vw, 5rem);
+  font-weight: 700;
+  color: var(--green);
+  text-shadow: 0 0 16px var(--green-glow);
+  animation: blink 1s steps(1) infinite;
+  transform: translateY(-4px);
+}
+
+@keyframes blink {
+  0%, 49%  { opacity: 1; }
+  50%, 100% { opacity: 0.25; }
+}
+
+.time__ampm {
+  font-size: clamp(0.9rem, 3vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--green);
+  margin-left: 8px;
+  align-self: center;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(34, 197, 94, 0.10);
+  border: 1px solid var(--border);
+}
+
+/* ============================================
+   DATE
+   ============================================ */
+.clock__date {
+  margin-top: 22px;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+.clock__date span { color: var(--green-bright); }
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+.clock__divider {
+  height: 1px;
+  margin: 30px 0 24px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ============================================
+   EXTRA INFO (day progress + timezone)
+   ============================================ */
+.clock__info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.info__item {
+  padding: 16px 14px;
+  border-radius: 14px;
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid var(--border);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.info__item:hover {
+  background: rgba(34, 197, 94, 0.10);
+  transform: translateY(-3px);
+}
+
+.info__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.info__value {
+  font-family: var(--mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--green-bright);
+  text-shadow: 0 0 12px rgba(34, 197, 94, 0.35);
+}
+
+/* Day progress bar */
+.progress {
+  margin-top: 10px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.12);
+  overflow: hidden;
+}
+
+.progress__fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green-dim), var(--green-bright));
+  box-shadow: 0 0 12px var(--green-glow);
+  transition: width 1s linear;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 520px) {
+  .clock { padding: 34px 22px 30px; }
+  .clock__status { font-size: 0.68rem; letter-spacing: 1px; }
+  .time__num { letter-spacing: 1px; }
+  .clock__info { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 360px) {
+  .clock__info { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .time__sep { opacity: 1; }
+}
